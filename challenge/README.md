@@ -1,50 +1,48 @@
-──┬──────────────────────────────────────────────────────────────────────────────────────────────
-       │ File: 0-fizzbuzz.py
+   │ File: 0-fizzbuzz.py
 ───────┼──────────────────────────────────────────────────────────────────────────────────────────────
    1   │ #!/usr/bin/python3
-   2   │
-   3   │ def fizzbuzz():
-   4   │     for i in range(1, 51):
-   5   │         if i % 15 == 0:
-   6   │             print("FizzBuzz", end=" ")
-   7   │         elif i % 3 == 0:
-   8   │             print("Fizz", end=" ")
-   9   │         elif i % 5 == 0:
-  10   │             print("Buzz", end=" ")
-  11   │         else:
-  12   │             print(i, end=" ")
-  13   │     print()
-  14   │
-  15   │ if __name__ == "__main__":
-  16   │     fizzbuzz()
+   2   │ """ FizzBuzz
+   3   │ """
+   4   │ import sys
+   5   │
+   6   │
+   7   │ def fizzbuzz(n):
+   8   │     """
+   9   │     FizzBuzz function prints numbers from 1 to n separated by a space.
+  10   │
+  11   │     - For multiples of three print "Fizz" instead of the number and for
+  12   │       multiples of five print "Buzz".
+  13   │     - For numbers which are multiples of both three and five print "FizzBuzz".
+  14   │     """
+  15   │     if n < 1:
+  16   │         return
+  17   │
+  18   │     tmp_result = []
+  19   │     for i in range(1, n + 1):
+  20   │         if (i % 3) == 0 and (i % 5) == 0:
+  21   │             tmp_result.append("FizzBuzz")
+  22   │         elif (i % 3) == 0:
+  23   │             tmp_result.append("Fizz")
+  24   │         elif (i % 5) == 0:
+  25   │             tmp_result.append("Buzz")
+  26   │         else:
+  27   │             tmp_result.append(str(i))
+  28   │     print(" ".join(tmp_result))
+  29   │
+  30   │
+  31   │ if __name__ == '__main__':
+  32   │     if len(sys.argv) <= 1:
+  33   │         print("Missing number")
+  34   │         print("Usage: ./0-fizzbuzz.py <number>")
+  35   │         print("Example: ./0-fizzbuzz.py 89")
+  36   │         sys.exit(1)
+  37   │
+  38   │     number = int(sys.argv[1])
+  39   │     fizzbuzz(number)
 ───────┴──────────────────────────────────────────────────────────────────────────────────────────────
 ───────┬──────────────────────────────────────────────────────────────────────────────────────────────
        │ File: 1-print_square.js
 ───────┼──────────────────────────────────────────────────────────────────────────────────────────────
    1   │ #!/usr/bin/node
-   2   │
-   3   │ const size = Number(process.argv[2]);
-   4   │
-   5   │ if (!Number.isInteger(size)) {
-   6   │   console.log("Missing size");
-   7   │ } else {
-   8   │   for (let i = 0; i < size; i++) {
-   9   │     console.log("#".repeat(size));
-  10   │   }
-  11   │ }
-───────┴──────────────────────────────────────────────────────────────────────────────────────────────
-───────┬──────────────────────────────────────────────────────────────────────────────────────────────
-       │ File: 2-sort.rb
-───────┼──────────────────────────────────────────────────────────────────────────────────────────────
-   1   │ #!/usr/bin/env ruby
-   2   │
-   3   │ args = ARGV
-   4   │
-   5   │ numbers = []
-   6   │ others = []
-   7   │
-   8   │ args.each do |a|
-   9   │   if a.match?(/^[-]?\d+$/)
-  10   │     numbers << a.to_i
-  11   │   else
-  12   │     others << a
+   2   │ /*
+   3   │     Print a square with the character #
